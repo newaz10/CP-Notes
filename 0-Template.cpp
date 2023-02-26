@@ -6,8 +6,8 @@
 using namespace std;
 
 // Type definitions
-typedef long long ll
-typedef bool bl
+typedef long long ll;
+typedef bool bl;
 
 // First I/O operation
 #define FIO ios_base::sync_with_stdio(false); cin.tie(NULL);
@@ -111,7 +111,7 @@ bl vc(char c) {
 void solve()
 {
     int ar[3] = {2, 1, 3};
-    
+
     asort(ar, 3);
     printvs(ar);
 
