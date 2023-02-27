@@ -1,13 +1,14 @@
 // CF(min 0900) -> Difficulty: 0990 (85) -> Time: 2h 10m -> Tags: 
-// CC(min 1000) -> Difficulty: 1265 (30) -> Time: 3h 00m -> Tags: String
+// CC(min 1000) -> Difficulty: 1265 (30) -> Time: 3h 00m -> Tags: Greedy Algorithms 
 
 // Header
 #include <bits/stdc++.h>
 using namespace std;
 
-// Type definitions
+// Typedef
 typedef long long ll;
 typedef bool bl;
+typedef string st;
 
 // First I/O operation
 #define FIO ios_base::sync_with_stdio(false); cin.tie(NULL);
@@ -16,7 +17,7 @@ typedef bool bl;
 #define tc int t; cin >> t; sol;
 #define sol while(t--) {solve();}
 
-// Print functions
+// Print Shortcuts
 #define cout(x) cout << x;
 #define sp cout(' ');
 #define nl cout('\n');
@@ -74,7 +75,7 @@ typedef bool bl;
 #define cl(v) v.clear();
 #define fi first
 #define se second
-#define it(a) for(auto i: a)
+#define it(a) for(auto &i: a)
 
 // Maximum & Minimum Range
 #define imax INT_MAX
@@ -96,7 +97,26 @@ typedef bool bl;
 // Functions: 
 int leftShift(int value, int time) {return value << time;}
 int rightShift(int value, int time) {return value >> time;}
+
+// Calculate Prime Numbers up to 10^8
+void sieve_of_eratosthenes(int n) {
+    vector<bool> is_prime(n+1, true); 
+    is_prime[0] = false; 
+    is_prime[1] = false;
+
+    for (int i = 2; i*i <= n; i++) { 
+        if (is_prime[i]) { 
+            for (int j = i*i; j <= n; j += i) { // mark all multiples of i as not prime
+                is_prime[j] = false;
+            }
+        }
+    }
+}
+
+// Prime Number Function (Calculate up to 10^6)
 bl prime(ll a) {if(a == 0 || a == 1) return 0; for(int i = 2; i <= round(sqrt(a)); i++) if(a%i == 0) return 0; return 1;}
+
+// GCD & LCM functions
 ll gcd(ll a, ll b) {if(b == 0) return a; return gcd(b, a%b);}
 ll lcm(ll a, ll b) {return a/gcd(a,b)*b;}
 
@@ -110,13 +130,11 @@ bl vc(char c) {
 // Code Starts from here...
 void solve()
 {
-    int ar[3] = {2, 1, 3};
-
-    asort(ar, 3);
-    printvs(ar);
-
-    asortd(ar, 3);
-    printvn(ar);
+    int cnt = 0;
+    foe(0, 1000000) {
+        if(prime(i)) cnt++;
+    }
+    print(cnt);
 }
 
 int main()
